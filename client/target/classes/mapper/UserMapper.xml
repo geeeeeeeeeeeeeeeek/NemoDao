@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapper namespace="com.nemo.dao.UserDao">
+
+    <!--  -->
+    <select id="select" parameterType="com.nemo.bean.QueryBean" resultType="com.nemo.bean.ResultBean" >
+        select * from t_user
+    </select>
+
+    <insert id="insert" parameterType="com.nemo.bean.QueryBean" resultType="java.lang.long" >
+        insert into t_user(name,age) values(#{name},#{age})
+    </insert>
+
+    <update id="update" parameterType="com.nemo.bean.QueryBean" resultType="java.lang.long" >
+        update t_user set name=#{name},age=#{age}) where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="com.nemo.bean.QueryBean" resultType="java.lang.long" >
+        delete from t_user where id = #{id}
+    </delete>
+
+</mapper>
