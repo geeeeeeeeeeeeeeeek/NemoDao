@@ -6,15 +6,15 @@
         select * from t_user
     </select>
 
-    <insert id="insert" parameterType="com.nemo.bean.QueryBean" resultType="java.lang.long" >
+    <insert id="insert" parameterType="com.nemo.bean.QueryBean" resultType="long" >
         insert into t_user(name,age) values(#{name},#{age})
     </insert>
 
-    <update id="update" parameterType="com.nemo.bean.QueryBean" resultType="java.lang.long" >
+    <update id="update" parameterType="com.nemo.bean.QueryBean" resultType="long" >
         update t_user set name=#{name},age=#{age}) where id = #{id}
     </update>
 
-    <delete id="delete" parameterType="com.nemo.bean.QueryBean" resultType="java.lang.long" >
+    <delete id="delete" parameterType="com.nemo.bean.QueryBean" resultType="long" >
         delete from t_user where id = #{id}
     </delete>
 

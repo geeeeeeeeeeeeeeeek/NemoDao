@@ -3,7 +3,7 @@
  * 2017/12/19 15:59
  */
 
-import com.nemo.dao.data.DataHelper;
+import com.nemo.framework.dao.data.DataHelper;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;

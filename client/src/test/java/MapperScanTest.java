@@ -3,31 +3,44 @@
  * 2017/12/20 17:06
  */
 
+import com.nemo.bean.ResultBean;
 import com.nemo.dao.UserDao;
-import com.nemo.dao.core.SqlContext;
-import com.nemo.dao.core.SqlSession;
-import com.nemo.dao.core.SqlSessionFactory;
-import com.nemo.dao.scan.MapperScaner;
-import com.nemo.dao.scan.bean.MapperBean;
+import com.nemo.framework.dao.core.Context;
+import com.nemo.framework.dao.core.SqlSession;
+import com.nemo.framework.dao.core.SqlSessionFactory;
+import com.nemo.framework.dao.scan.MapperScaner;
+import com.nemo.framework.dao.scan.bean.MapperBean;
+import com.nemo.framework.dao.utils.LogUtils;
 import org.dom4j.DocumentException;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 /**
+ * Mapper扫描相关测试
  * Created by Nemo on 2017/12/20.
  */
 public class MapperScanTest {
 
+    LogUtils log = LogUtils.getLog(MapperScanTest.class);
+
+    /**
+     * 扫描测试
+     * @throws IOException
+     * @throws DocumentException
+     * @throws NoSuchMethodException
+     * @throws SQLException
+     */
     @Test
     public void scan() throws IOException, DocumentException, NoSuchMethodException, SQLException {
         MapperScaner.scan();
 
-        SqlContext context = SqlContext.instance();
+        Context context = Context.instance();
         Map<String, MapperBean> mappers = context.getMappers();
         Set<String> keySet = mappers.keySet();
         for(String key : keySet){
@@ -35,13 +48,20 @@ public class MapperScanTest {
         }
     }
 
+    /**
+     * 测试扫描后查询
+     * @throws Exception
+     */
     @Test
-    public void exec() throws NoSuchMethodException, SQLException, DocumentException, IOException {
+    public void exec() throws Exception {
         scan();
         SqlSession session = SqlSessionFactory.getSession();
         Map<String,String> params = new HashMap<String, String>();
         params.put("name","Nemo");
-        session.exec(UserDao.class,UserDao.class.getMethod("select"),params);
+        List<ResultBean> resultBeanList = (List<ResultBean>) session.exec(UserDao.class, UserDao.class.getMethod("select"), params);
+        for(ResultBean result : resultBeanList){
+            log.debug(result.getName() + result.getAge());
+        }
     }
 
 }
