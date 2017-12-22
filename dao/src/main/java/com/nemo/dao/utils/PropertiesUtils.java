@@ -4,6 +4,8 @@
  */
 package com.nemo.dao.utils;
 
+import com.nemo.dao.bean.PropKey;
+
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -25,7 +27,7 @@ public class PropertiesUtils {
     /**
      * 配置文件名称
      */
-    private static String propname = "config.properties";
+    private static String propname = PropKey.PROPERTIES_FILE_NAME;
 
     /**
      * 获取配置参数

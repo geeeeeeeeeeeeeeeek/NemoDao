@@ -3,7 +3,7 @@
 
     <!--  -->
     <select id="select" parameterType="com.nemo.bean.QueryBean" resultType="com.nemo.bean.ResultBean" >
-        select * from t_user
+        select * from t_user where name = ${name}
     </select>
 
     <insert id="insert" parameterType="com.nemo.bean.QueryBean" resultType="java.lang.long" >

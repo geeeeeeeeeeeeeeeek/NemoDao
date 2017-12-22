@@ -2,9 +2,11 @@
  * All rights Reserved, Designed By 微迈科技
  * 2017/12/20 10:33
  */
-package com.nemo.dao.xml;
+package com.nemo.dao.scan;
 
+import com.nemo.dao.bean.PropKey;
 import com.nemo.dao.utils.CollectionsUtils;
+import com.nemo.dao.utils.PropertiesUtils;
 import org.dom4j.DocumentException;
 
 import java.io.File;
@@ -21,13 +23,20 @@ import java.util.List;
  */
 public class MapperScaner {
 
+    /**
+     * 所有的mapper文件
+     */
     private static List<String> files = new ArrayList<String>();
 
     /**
-     * 开始扫描
-     * @param folder
+     * mapper文件根目录
      */
-    public static void scan(String folder) throws IOException, DocumentException {
+    private static String folder = PropertiesUtils.loadProp(PropKey.MAPPER_BASE);
+
+    /**
+     * 开始扫描
+     */
+    public static void scan() throws IOException, DocumentException {
         Enumeration<URL> resources = Thread.currentThread().getContextClassLoader().getResources(folder);
         while (resources.hasMoreElements()){
             URL url = resources.nextElement();
@@ -62,7 +71,7 @@ public class MapperScaner {
         File[] dirfiles = dir.listFiles(new FileFilter() {
             //自定义过滤规则 如果可以循环(包含子目录) 或则是以.xml结尾的文件
             public boolean accept(File file) {
-                return (recursive && file.isDirectory()) || (file.getName().endsWith(".xml"));
+                return (recursive && file.isDirectory()) || (file.getName().endsWith(".scan"));
             }
         });
         //循环所有文件

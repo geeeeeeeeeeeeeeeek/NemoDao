@@ -4,6 +4,7 @@
  */
 package com.nemo.dao.datasource;
 
+import com.nemo.dao.bean.PropKey;
 import com.nemo.dao.utils.PropertiesUtils;
 
 import javax.sql.DataSource;
@@ -22,17 +23,17 @@ import java.util.logging.Logger;
 public class SimpleDatasource implements DataSource {
 
     //mysql数据库驱动
-    private static final String driver = PropertiesUtils.loadProp("jdbc.driver");
+    private static final String driver = PropertiesUtils.loadProp(PropKey.JDBC_DRIVER);
     //数据库连接地址
-    private static final String url = PropertiesUtils.loadProp("jdbc.url");
+    private static final String url = PropertiesUtils.loadProp(PropKey.JDBC_URL);
     //数据库的用户名
-    private static final String username = PropertiesUtils.loadProp("jdbc.username");
+    private static final String username = PropertiesUtils.loadProp(PropKey.JDBC_USERNAME);
     //数据库的密码
-    private static final String password = PropertiesUtils.loadProp("jdbc.password");
+    private static final String password = PropertiesUtils.loadProp(PropKey.JDBC_PASSWORD);
     //
-    private static final int maxSize = PropertiesUtils.loadIntValue("datasource.max.size");
+    private static final int maxSize = PropertiesUtils.loadIntValue(PropKey.DATASOURCE_MAX_SIZE);
     //
-    private static final int initSize = PropertiesUtils.loadIntValue("datasource.init.size");
+    private static final int initSize = PropertiesUtils.loadIntValue(PropKey.DATASOURCE_INIT_SIZE);
 
     //连接池
     private static LinkedList<Connection> pool = new LinkedList<Connection>();

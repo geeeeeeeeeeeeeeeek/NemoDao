@@ -4,7 +4,7 @@
  */
 package com.nemo.dao.core;
 
-import com.nemo.dao.xml.bean.MapperBean;
+import com.nemo.dao.scan.bean.MapperBean;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,12 +15,14 @@ import java.util.Map;
  */
 public class SqlContext {
 
+    /**
+     * Mapper容器
+     */
     private static Map<String,MapperBean> mappers = new HashMap<String, MapperBean>();
 
     private static SqlContext sqlContext;
 
     private SqlContext(){
-
     }
 
     /**

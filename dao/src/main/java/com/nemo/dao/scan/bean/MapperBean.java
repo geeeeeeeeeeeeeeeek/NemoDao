@@ -2,9 +2,10 @@
  * All rights Reserved, Designed By 微迈科技
  * 2017/12/20 10:44
  */
-package com.nemo.dao.xml.bean;
+package com.nemo.dao.scan.bean;
 
 /**
+ * Mapper容器Bean
  * Created by Nemo on 2017/12/20.
  */
 public class MapperBean {
