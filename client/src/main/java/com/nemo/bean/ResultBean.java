@@ -1,5 +1,5 @@
 /* 
- * All rights Reserved, Designed By 农金圈
+ * All rights Reserved, Designed By 微迈科技
  * 2017/12/22 16:50
  */
 package com.nemo.bean;

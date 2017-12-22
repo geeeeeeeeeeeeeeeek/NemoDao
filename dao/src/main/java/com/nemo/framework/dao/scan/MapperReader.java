@@ -101,7 +101,11 @@ public class MapperReader {
 
         String id = getId(element);
         String parameterType = getParameterType(element,id);
-        String resultType = getResultType(element,id);
+        //除了select，其余的均先返回long好了
+        String resultType = "long";
+        if("select".equals(type)) {
+            resultType = getResultType(element, id);
+        }
         String sql = getSql(element,id);
         add2mappers(type,parameterType,resultType,id,sql);
     }
